@@ -1,6 +1,8 @@
 import os
 from datetime import datetime
 
+DIRECTORY = '/mnt/c/Games'
+
 def list_files_tree(directory):
     file_tree = {}
     for root, dirs, files in os.walk(directory):
@@ -17,8 +19,8 @@ def save_tree_to_file(file_tree, output_file):
             for filename in files:
                 fp.write(f"  +-- {filename}\n")
 
-directory = r'C:/Temp'
-timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-output_file = f"{timestamp}.txt"
-file_tree = list_files_tree(directory)
-save_tree_to_file(file_tree, output_file)
+if __name__ == "__main__":
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    output_file = f"{timestamp}.txt"
+    file_tree = list_files_tree(DIRECTORY)
+    save_tree_to_file(file_tree, output_file)
